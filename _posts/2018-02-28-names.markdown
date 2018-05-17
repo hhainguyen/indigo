@@ -2,9 +2,9 @@
 title: "I know nothing but names"
 layout: post
 date: 2018-02-28 
-tag: Word2Vec Names 
-image: https://koppl.in/indigo/assets/images/jekyll-logo-light-solid.png
-headerImage: true
+tag: Word2Vec, Names, Classification, Neural Nets
+image: https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png
+headerImage: True
 projects: true
 hidden: true # don't count this post in blog pagination
 description: "This project is about mining patterns from personal names to build models that can clasify names into different categories."
@@ -12,14 +12,15 @@ category: project
 author: hai
 externalLink: false
 ---
-
-![Top 100 UK Surnames](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png)
+{% comment %} 
+--![Top 100 UK Surnames](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png)
+{% endcomment %} 
 
 **Names** is one of my most favourite projects. We looked at how to represent information for a name and how such representation can be used to gain more understanding of a user like what is the country of origin, ethnicity, or gender... 
 
 ---
 
-##Buzzwords
+## Buzzwords
 
 - Natural Language Processing
 - Word2Vec
