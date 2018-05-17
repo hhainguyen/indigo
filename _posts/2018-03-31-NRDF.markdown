@@ -1,7 +1,7 @@
 ---
 title: "Northern Regional Data Facility"
 layout: post
-date: 2018-01-10 
+date: 2018-03-31 
 tag: Visualisation, Dashboard, D3.js
 headerImage: False
 projects: true
@@ -13,7 +13,7 @@ externalLink: false
 ---
 
 
-![Top 100 UK Surnames](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/nrdf-screenshot.png)
+![NRDF_screenshot](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/nrdf-screenshot.png)
 
 **[Northern Regional Data Facility](http://nrdf.cdrc.ac.uk)** (aka NRDF) is a regional data store and dashboard that enables users to download datasets in different topics in pre-defined regions. I used D3.js to create dynamic and interactive visualiation of the datasets.
 
