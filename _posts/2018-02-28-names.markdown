@@ -1,19 +1,19 @@
 ---
-title: "Personal Names Classification: I know nothing but names"
+title: "I know nothing but names"
 layout: post
 date: 2018-02-28 
-tag: jekyll
+tag: Word2Vec Names 
 image: https://koppl.in/indigo/assets/images/jekyll-logo-light-solid.png
 headerImage: true
 projects: true
 hidden: true # don't count this post in blog pagination
-description: "This project is about mining patterns in personal names to build classifiers that can clasify names into different categories."
+description: "This project is about mining patterns from personal names to build models that can clasify names into different categories."
 category: project
 author: hai
 externalLink: false
 ---
 
-![Screenshot](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/patterns_by_countries.png)
+![Top 100 UK Surnames](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png)
 
 **Names** is one of my most favourite projects. We looked at how to represent information for a name and how such representation can be used to gain more understanding of a user like what is the country of origin, ethnicity, or gender... 
 
