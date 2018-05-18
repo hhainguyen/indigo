@@ -12,8 +12,8 @@ picture: https://www.liverpool.ac.uk/media/livacuk/gdsl/images/hai.png
 
 # If you want to include your resume, set to true
 # and specify source (external or local).
-resume: true
-resume-external: true
+resume: false
+resume-external: false
 resume-url: https://google.com/?q=my+resume
 
 url: http://hhainguyen.github.io/indigo
@@ -70,11 +70,11 @@ width: normal
 # paginate_path: "blog/:num/"
 
 # if you don't need projects, comment the *projects* configs below
-projects: true
 
 # if you don't need "about" or "blog", comment them out below
 about: true
 blog: true
+projects: true
 
 # do you want to show the "read time" of the posts?
 read-time: true
