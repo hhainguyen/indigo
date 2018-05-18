@@ -2,7 +2,11 @@
 title: "I know nothing but names"
 layout: post
 date: 2018-02-28 
-tag: Word2Vec, Names, Classification, Neural Nets
+tag: 
+- Word2Vec
+- Names
+- Text Classification
+- Neural Nets
 image: https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png
 headerImage: False
 projects: true
