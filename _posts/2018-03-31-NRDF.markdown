@@ -2,9 +2,10 @@
 title: "Northern Regional Data Facility"
 layout: post
 date: 2018-03-31 
-tag: Visualisation
-tag: Dashboard
-tag: D3.js
+tag:
+- Visualisation
+- Dashboard 
+- D3.js
 headerImage: False
 projects: true
 hidden: true 
