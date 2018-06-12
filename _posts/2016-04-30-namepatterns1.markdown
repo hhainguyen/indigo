@@ -1,9 +1,9 @@
 ---
-title: "Finding Patterns in Personal Names (part 1: The most important patterns in names)"
+title: "What are the most important patterns in human names?"
 layout: post
 date: 2016-04-30 13:45
 image: https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png
-headerImage: false
+headerImage: true
 tag:
 - ngrams
 - tree-based models
