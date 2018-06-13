@@ -1,44 +1,44 @@
 ---
 title: "What are the most important patterns in human names?"
 layout: post
-date: 2016-04-30 13:45
+date: 2018-04-30 13:45
 image: https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/top100-uknames.png
 headerImage: true
 tag:
-- ngrams
+- python
 - tree-based models
-- randomforest
-- extratrees
+- random forest
+- extra trees
 - xgboost
-- name classifications
-star: true
+- name classification
+star: false
 category: blog
 author: hai
 description: In this blog post, we will look at the importance of such syntatic features (sub-words) in name classification. We are going to do this by using some extensions of tree bagging models (*Random Forest* and *Extremely Randomized Trees*) to classify the datasets and then using feature importance of each model to see which parterns are more important patterns in classifying names.
 ---
 ## Introduction
-In this series of blog posts, I will going through a process of finding syntatic patterns of personal names. This is relevant to my "Names" project, in that I was looking at building a flexible model for name classification tasks. In these posts we are only interested in finding the syntatic/linguistic patterns of personal names and do not try to build a working model.
+In this series of blog posts, I am gonna go through a process of finding syntatic patterns of personal names. This is relevant to my "Names" project, in that I was looking at building a flexible model for name classification tasks. However in these posts we are only interested in finding the syntatic/linguistic patterns of personal names and do not try to build a working model.
 
 ### Dataset
 We gonna use a dataset consisting Olympics athletes' name and countries from the last 2 Olympics Games (2012 and 2016). To try not to make the posts too length, I have collected and cleaned a bit of the dataset so it is ready to use. 
 
 ### Skill sets
 * Basic skills in this series of posts include **tree-based models (bagging and boosting)**, **vector-based text modelling** and (a bit of) **neural networks**.
-* Most code are written in **Python**; however I will occasionally move to *R* in some tasks due to the excellent R package's `ggplot2`.
+* Most code are written in **Python**; however I will occasionally move to **R** in some tasks due to the excellent R package's `ggplot2`.
 
 ## Part 1: What are the most important syntatic patterns in names?
 
 In this post, we are trying to follow human instinct while guessing where a person coming from. 
 
-* Normally when I told people my first name,`Hai`, most of the time they would say I was from China. Not quite.
+* When I told people my first name,`Hai`, most of the time they would say I was from China. Not quite.
 
 * If I told them my middle name, *removed for privacy*, then they would have another guess, from Korea or China.
 
-* Finally, when they knew my last name, `Nguyen`, 75% of them made a correct prediction
+* Finally, when they knew my last name, `Nguyen`, 75% of them made a correct prediction.
 
 So which features in a name that enable us to correctly guess where a person come from, or even their gender, age, etc?
 
-The first and easy answer would be linguistic/syntatic features.
+The first and easy answer would be linguistic/syntatic features. Such names or sub-names are somehow indexed in our brain so that every time we see a person with similar patterns/sub-names/names we can derive where they are from, which religion they follow and so on...
 
 In this first part, we will look at the importance of such syntatic features (sub-words) in name classification. We are going to do this by using some extensions of tree bagging models (*Random Forest* and *Extremely Randomized Trees*) to classify the datasets and then using feature importance of each model to see which parterns are more important features in classifying names.
 
@@ -61,10 +61,6 @@ Firstly we will load the dataset into a Pandas's `DataFrame` and have some initi
 
 ```python
 names = pd.read_csv('data/fullname_olympics_1216.csv')
-```
-
-
-```python
 names
 ```
 
@@ -182,56 +178,6 @@ names
       <td>MA</td>
     </tr>
     <tr>
-      <th>20</th>
-      <td>#abdalelah $haroun</td>
-      <td>QA</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>#abdalla $targan</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>#abdel #aziz $mehelba</td>
-      <td>EG</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>#abdelati #el $guesse</td>
-      <td>MA</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>#abdelaziz $merzougui</td>
-      <td>ES</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>#abdelaziz #mohamed $ahmed</td>
-      <td>SD</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>#abdelghani $demmou</td>
-      <td>DZ</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>#abdelhafid $benchabla</td>
-      <td>DZ</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>#abdelhakim $amokrane</td>
-      <td>DZ</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>#abdelkader $chadi</td>
-      <td>DZ</td>
-    </tr>
-    <tr>
       <th>...</th>
       <td>...</td>
       <td>...</td>
@@ -250,41 +196,6 @@ names
       <th>22825</th>
       <td>#rizlen $zouak</td>
       <td>MA</td>
-    </tr>
-    <tr>
-      <th>22826</th>
-      <td>#vincent $zouaoui $dandrieux</td>
-      <td>FR</td>
-    </tr>
-    <tr>
-      <th>22827</th>
-      <td>#hakim $zouari</td>
-      <td>TN</td>
-    </tr>
-    <tr>
-      <th>22828</th>
-      <td>#francine $zouga</td>
-      <td>CM</td>
-    </tr>
-    <tr>
-      <th>22829</th>
-      <td>#michaela $zrustova</td>
-      <td>CZ</td>
-    </tr>
-    <tr>
-      <th>22830</th>
-      <td>#nathalie $zu $sayn $wittgenstein</td>
-      <td>DK</td>
-    </tr>
-    <tr>
-      <th>22831</th>
-      <td>#szabolcs $zubai</td>
-      <td>HU</td>
-    </tr>
-    <tr>
-      <th>22832</th>
-      <td>#shahar $zubari</td>
-      <td>IL</td>
     </tr>
     <tr>
       <th>22833</th>
@@ -463,96 +374,6 @@ names[names.country=='US']
       <td>US</td>
     </tr>
     <tr>
-      <th>224</th>
-      <td>#ajee $wilson</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>227</th>
-      <td>#akalani $baravilala</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>329</th>
-      <td>#alesha $widdall</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>343</th>
-      <td>#alev $kelter</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>347</th>
-      <td>#alex $bowen</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>356</th>
-      <td>#alex $morgan</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>357</th>
-      <td>#alex $obert</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>359</th>
-      <td>#alex $roelse</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>380</th>
-      <td>#alexander $karwoski</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>386</th>
-      <td>#alexander $massialas</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>389</th>
-      <td>#alexander $naddour</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>413</th>
-      <td>#alexandra $raisman</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>461</th>
-      <td>#ali $krieger</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>508</th>
-      <td>#alisa $kano</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>510</th>
-      <td>#alise $post</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>511</th>
-      <td>#alisha $glass</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>529</th>
-      <td>#allie $long</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>531</th>
-      <td>#allison #m. $brock</td>
-      <td>US</td>
-    </tr>
-    <tr>
       <th>533</th>
       <td>#allison $schmitt</td>
       <td>US</td>
@@ -653,36 +474,6 @@ names[names.country=='US']
       <td>US</td>
     </tr>
     <tr>
-      <th>22411</th>
-      <td>#serena $williams</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>22417</th>
-      <td>#venus $williams</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>22424</th>
-      <td>#robert $willis</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>22437</th>
-      <td>#elsie $windes</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>22478</th>
-      <td>#dagmara $wozniak</td>
-      <td>US</td>
-    </tr>
-    <tr>
-      <th>22480</th>
-      <td>#adam $wright</td>
-      <td>US</td>
-    </tr>
-    <tr>
       <th>22485</th>
       <td>#erica $wu</td>
       <td>US</td>
@@ -744,7 +535,7 @@ names[names.country=='US']
 
 
 
-This US group doesn't look very good. Names like *karwoski*, *"naddour"*, *"weltz"*, *"young"*, *"yurkovich"* will bring a lot of noise to our models. So I decided to get rid of it (for now). Sometimes having more data doesn't mean it's gonna be better. We have similar problems in immigration countries like Australia, Canada, and New Zealand so I might need to also filter out these countries.
+This US group doesn't look very good. Names like *"karwoski"*, *"naddour"*, *"weltz"*, *"young"*, *"yurkovich"* will bring a lot of noise to our models. So I decided to get rid of it (for now). Sometimes having more data doesn't mean it's gonna be better. We have similar problems in immigration countries like Australia, Canada, and New Zealand so I might need to also filter out these countries.
 
 
 ```python
@@ -756,17 +547,9 @@ filtered_names['country'].value_counts()[names['country'].value_counts()>=15].pl
     125
 
 
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f98aeacf208>
-
-
-
-
 ![png](https://raw.githubusercontent.com/hhainguyen/indigo/gh-pages/assets/namepatterns_1_output_10_2.png)
 
-
+Note that we've removed some countries with less samples so that the total country count now become 125.
 
 ```python
 filtered_names = filtered_names[filtered_names['country'].isin(filtered_names['country'].value_counts()[filtered_names['country'].value_counts()>=15].index)]
