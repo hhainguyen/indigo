@@ -30,7 +30,7 @@ permalink: /:title/
 
 # if you don't want comments in your posts, leave categories empty
 disqus:
-  shortname: mydisqus # enter this from your disqus account
+  shortname: haihnguyen # enter this from your disqus account
   categories: [blog, project] # only show disqus for posts that have these categories
 
 # if you don't have any of social below, comment the line
@@ -57,13 +57,13 @@ authors:
         name: Hai Nguyen
         bio: Not yet
         external-image: false
-        picture: assets/images/profile.jpg
+        picture: https://www.liverpool.ac.uk/media/livacuk/gdsl/images/hai.png
 #        twitter: johndoe
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: normal
+width: large
 
 # if you don't need pagination, comment the *paginate* configs below
 # paginate: 5
